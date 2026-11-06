@@ -36,12 +36,14 @@ public class InventoryPage {
     }
 
     public void addFirstItemToCart() {
-        driver.findElements(addToCartButton).get(0).click();
+        wait.until(ExpectedConditions.elementToBeClickable(addToCartButton)).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(shoppingCartBadge));
         Log.info("First item added to cart.");
     }
 
     public int getCartBadgeCount() {
         try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(shoppingCartBadge));
             return Integer.parseInt(driver.findElement(shoppingCartBadge).getText());
         } catch (Exception e) {
             return 0;

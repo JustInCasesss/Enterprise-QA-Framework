@@ -28,13 +28,16 @@ public class BaseTest {
 
     @BeforeMethod
     public void setUp() {
-        String browserName = prop.getProperty("browser");
+        // System property -Dbrowser overrides config.properties
+        String browserName = System.getProperty("browser", prop.getProperty("browser"));
         if (browserName.equalsIgnoreCase("chrome")) {
             ChromeOptions options = new ChromeOptions();
-            options.addArguments("--headless"); // Default for CI
+            options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu");
             driver = new ChromeDriver(options);
         } else if (browserName.equalsIgnoreCase("firefox")) {
-            driver = new FirefoxDriver();
+            org.openqa.selenium.firefox.FirefoxOptions options = new org.openqa.selenium.firefox.FirefoxOptions();
+            options.addArguments("--headless");
+            driver = new FirefoxDriver(options);
         } else if (browserName.equalsIgnoreCase("edge")) {
             driver = new EdgeDriver();
         }
