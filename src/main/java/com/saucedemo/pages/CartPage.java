@@ -28,7 +28,8 @@ public class CartPage {
 
     public void clickCheckout() {
         wait.until(ExpectedConditions.elementToBeClickable(checkoutButton)).click();
-        Log.info("Checkout button clicked.");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("first-name")));
+        Log.info("Checkout button clicked, checkout page loaded.");
     }
 
     public void removeFirstItem() {
