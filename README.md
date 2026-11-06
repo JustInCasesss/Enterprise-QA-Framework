@@ -49,14 +49,6 @@ Enterprise-QA-Framework/
 | Apache POI 5.2.5 | Excel-based data-driven testing |
 | GitHub Actions | CI/CD pipeline |
 
-## Demo Walkthrough
-
-🎬 **[Open the interactive walkthrough](walkthrough.html)** — an animated, self-contained demo that plays the framework's 4-test run step by step: the architecture flow, browser actions, execution log, and a live ExtentReport dashboard. It also has an embedded "Knowledge Check" quiz for interview prep. Just open `walkthrough.html` in any browser (no internet/setup needed).
-
-🎥 **[Cinematic demo video](demo/qa-framework-walkthrough.mp4)** — a 22s, 1080p/30fps H.264 video (1080p) rendered with HyperFrames. It walks through the opening title, the POM architecture pipeline, the 4-test run, and the ExtentReport dashboard. Great for attaching to job applications or the repo's "About" section.
-
-> Note: both are animated reproductions of the framework's behavior, not screen recordings — the real run output lives in `logs/automation.log` and `reports/ExtentReport.html`.
-
 ## Quick Start
 
 ### Prerequisites
