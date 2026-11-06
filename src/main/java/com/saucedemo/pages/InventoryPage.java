@@ -1,7 +1,9 @@
 package com.saucedemo.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import com.saucedemo.utils.Log;
@@ -36,7 +38,13 @@ public class InventoryPage {
     }
 
     public void addFirstItemToCart() {
-        wait.until(ExpectedConditions.elementToBeClickable(addToCartButton)).click();
+        WebElement btn = wait.until(ExpectedConditions.elementToBeClickable(addToCartButton));
+        try {
+            btn.click();
+        } catch (Exception e) {
+            // Fallback: JavaScript click for headless mode
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", btn);
+        }
         wait.until(ExpectedConditions.visibilityOfElementLocated(shoppingCartBadge));
         Log.info("First item added to cart.");
     }
