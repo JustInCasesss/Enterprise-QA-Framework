@@ -22,7 +22,7 @@ public class LoginPage {
     }
 
     public void enterUsername(String username) {
-        wait.until((ExpectedConditions::visibilityOfElementLocated(usernameField));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(usernameField));
         driver.findElement(usernameField).clear();
         driver.findElement(usernameField).sendKeys(username);
         Log.info("Username entered: " + username);
@@ -46,6 +46,6 @@ public class LoginPage {
     }
 
     public String getErrorMessage() {
-        return wait.until((ExpectedConditions::visibilityOfElementLocated(errorMessage)).getText();
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(errorMessage)).getText();
     }
 }

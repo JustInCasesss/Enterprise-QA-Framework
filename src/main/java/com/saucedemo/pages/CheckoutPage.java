@@ -39,11 +39,11 @@ public class CheckoutPage {
     }
 
     public void clickFinish() {
-        wait.until((ExpectedConditions::elementToBeClickable(finishButton))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(finishButton)).click();
         Log.info("Finish button clicked.");
     }
 
     public String getThankYouMessage() {
-        return wait.until((ExpectedConditions::visibilityOfElementLocated(thankYouMessage))).getText();
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(thankYouMessage)).getText();
     }
 }

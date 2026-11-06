@@ -24,7 +24,7 @@ public class InventoryPage {
     }
 
     public void waitForPageLoad() {
-        wait.until((ExpectedConditions::visibilityOfElementLocated(inventoryContainer)));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(inventoryContainer));
         Log.info("Inventory page loaded.");
     }
 
