@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.saucedemo.utils.Log;
 import java.time.Duration;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class InventoryPage {
     private WebDriver driver;
@@ -31,7 +32,7 @@ public class InventoryPage {
     public List<String> getAllProductTitles() {
         return driver.findElements(productTitle).stream()
                 .map(e -> e.getText())
-                .toList();
+                .collect(Collectors.toList());
     }
 
     public void addFirstItemToCart() {
