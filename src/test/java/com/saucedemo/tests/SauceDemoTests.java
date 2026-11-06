@@ -58,6 +58,12 @@ public class SauceDemoTests extends BaseTest {
         InventoryPage inventory = new InventoryPage(driver);
         inventory.waitForPageLoad();
         inventory.addFirstItemToCart();
+        // Wait for cart badge to update (headless mode can be slow)
+        int attempts = 0;
+        while (inventory.getCartBadgeCount() == 0 && attempts < 10) {
+            try { Thread.sleep(500); } catch (InterruptedException ignored) {}
+            attempts++;
+        }
         Assert.assertEquals(inventory.getCartBadgeCount(), 1);
         inventory.clickCartIcon();
 
