@@ -34,8 +34,9 @@ public class CheckoutPage {
     }
 
     public void clickContinue() {
-        driver.findElement(continueButton).click();
-        Log.info("Continue button clicked.");
+        wait.until(ExpectedConditions.elementToBeClickable(continueButton)).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(finishButton));
+        Log.info("Continue button clicked, overview page loaded.");
     }
 
     public void clickFinish() {
