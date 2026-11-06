@@ -1,6 +1,7 @@
 package com.saucedemo.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import com.aventstack.extentreports.ExtentTest;
 import com.saucedemo.base.BaseTest;
