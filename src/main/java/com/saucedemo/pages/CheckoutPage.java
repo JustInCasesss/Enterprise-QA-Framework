@@ -1,5 +1,7 @@
 package com.saucedemo.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -34,13 +36,23 @@ public class CheckoutPage {
     }
 
     public void clickContinue() {
-        wait.until(ExpectedConditions.elementToBeClickable(continueButton)).click();
+        WebElement btn = wait.until(ExpectedConditions.elementToBeClickable(continueButton));
+        try {
+            btn.click();
+        } catch (Exception e) {
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", btn);
+        }
         wait.until(ExpectedConditions.visibilityOfElementLocated(finishButton));
         Log.info("Continue button clicked, overview page loaded.");
     }
 
     public void clickFinish() {
-        wait.until(ExpectedConditions.elementToBeClickable(finishButton)).click();
+        WebElement btn = wait.until(ExpectedConditions.elementToBeClickable(finishButton));
+        try {
+            btn.click();
+        } catch (Exception e) {
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", btn);
+        }
         Log.info("Finish button clicked.");
     }
 
