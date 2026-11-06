@@ -1,5 +1,7 @@
 package com.saucedemo.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -27,7 +29,12 @@ public class CartPage {
     }
 
     public void clickCheckout() {
-        wait.until(ExpectedConditions.elementToBeClickable(checkoutButton)).click();
+        WebElement btn = wait.until(ExpectedConditions.elementToBeClickable(checkoutButton));
+        try {
+            btn.click();
+        } catch (Exception e) {
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", btn);
+        }
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("first-name")));
         Log.info("Checkout button clicked, checkout page loaded.");
     }
